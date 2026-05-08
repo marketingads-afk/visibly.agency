@@ -301,7 +301,7 @@ h1 .highlight::after {
 }
 
 /* ── SECTIONS COMMON ── */
-section { padding: 100px 48px; }
+section { padding: 130px 48px; }
 
 .section-tag {
   font-size: 0.75rem;
@@ -309,7 +309,7 @@ section { padding: 100px 48px; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .section-title {
@@ -317,16 +317,17 @@ section { padding: 100px 48px; }
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1.1;
+  line-height: 1.15;
   max-width: 600px;
 }
 
 .section-sub {
   color: var(--text-muted);
   max-width: 480px;
-  margin-top: 16px;
-  font-size: 1rem;
+  margin-top: 20px;
+  font-size: 1.05rem;
   font-weight: 300;
+  line-height: 1.8;
 }
 
 /* ── SERVICES ── */
@@ -353,7 +354,7 @@ section { padding: 100px 48px; }
 
 .service-card {
   background: var(--gray);
-  padding: 48px 40px;
+  padding: 56px 48px;
   transition: background 0.3s;
   position: relative;
   overflow: hidden;
@@ -535,6 +536,31 @@ section { padding: 100px 48px; }
   font-family: 'Syne', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
+}
+
+.service-featured-card {
+  background: linear-gradient(135deg, rgba(123,97,255,0.12), rgba(200,241,53,0.06)) !important;
+  border: 1px solid rgba(123,97,255,0.3) !important;
+}
+
+.service-featured-card::before {
+  background: var(--accent2) !important;
+}
+
+.service-featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(123,97,255,0.2);
+  border: 1px solid rgba(123,97,255,0.4);
+  color: #a991ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* ── RÉSULTATS ── */
@@ -948,14 +974,6 @@ footer .logo { font-size: 1.1rem; }
 
   </section>
 
-  <!-- MARQUEE -->
-
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span>Réseaux sociaux</span><span class="dot">Publicité Meta</span><span>Création de visuels</span><span class="dot">Instagram & Facebook</span><span>Gestion de communauté</span><span class="dot">Stratégie digitale</span><span>Réseaux sociaux</span><span class="dot">Publicité Meta</span><span>Création de visuels</span><span class="dot">Instagram & Facebook</span><span>Gestion de communauté</span><span class="dot">Stratégie digitale</span>
-    </div>
-  </div>
-
   <!-- SERVICES -->
 
   <section id="services">
@@ -992,13 +1010,23 @@ footer .logo { font-size: 1.1rem; }
   </div>
 
   <div class="service-card">
-    <div class="service-icon">🎨</div>
-    <div class="service-name">Création de Visuels</div>
-    <div class="service-desc">Logos, affiches, bannières et visuels pour vos réseaux. Une identité visuelle cohérente qui marque les esprits.</div>
+    <div class="service-icon">🌐</div>
+    <div class="service-name">Création & Refonte de Site Web</div>
+    <div class="service-desc">Votre site vitrine est votre meilleur commercial. On crée ou refond votre site pour qu'il soit moderne, rapide et qu'il convertisse vos visiteurs en clients.</div>
     <div class="service-price">
-      <span class="price-from">à partir de</span>
-      <span class="price-num">150€</span>
-      <span class="price-period">/projet</span>
+      <span class="price-from">Devis</span>
+      <span class="price-num" style="font-size:1.2rem; margin-left: 8px;">Sur mesure</span>
+    </div>
+  </div>
+
+  <div class="service-card service-featured-card">
+    <div class="service-featured-badge">✦ Nouveau service</div>
+    <div class="service-icon" style="background: rgba(123,97,255,0.15); border-color: rgba(123,97,255,0.3);">🚀</div>
+    <div class="service-name">Pack Visibilité Complète</div>
+    <div class="service-desc">Site web + réseaux sociaux + publicité Meta. Tout ce dont votre entreprise a besoin pour dominer votre marché local. Un seul interlocuteur, une stratégie cohérente.</div>
+    <div class="service-price">
+      <span class="price-from">Devis</span>
+      <span class="price-num" style="font-size:1.2rem; margin-left: 8px;">Personnalisé</span>
     </div>
   </div>
 </div>
@@ -1265,6 +1293,8 @@ footer .logo { font-size: 1.1rem; }
         <option>Gestion Réseaux Sociaux</option>
         <option>Publicité Meta</option>
         <option>Création de Visuels</option>
+        <option>Création / Refonte de Site Web</option>
+        <option>Pack Visibilité Complète</option>
         <option>Pack complet (Growth)</option>
       </select>
     </div>
