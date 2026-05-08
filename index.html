@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Visibly Agency — Rendez votre entreprise visible</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -25,10 +25,11 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--black);
   color: var(--white);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.85;
   overflow-x: hidden;
+  letter-spacing: 0.01em;
 }
 
 /* ── NOISE OVERLAY ── */
@@ -536,7 +537,113 @@ section { padding: 100px 48px; }
   font-weight: 700;
 }
 
-/* ── PRICING ── */
+/* ── RÉSULTATS ── */
+#resultats { background: var(--gray); }
+
+.results-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.case-card {
+  background: var(--black);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 24px;
+  padding: 36px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.case-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200,241,53,0.3);
+}
+
+.case-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.case-icon {
+  width: 48px; height: 48px;
+  background: rgba(200,241,53,0.1);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.case-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.case-sector { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+.case-service-tag {
+  margin-left: auto;
+  background: rgba(123,97,255,0.15);
+  border: 1px solid rgba(123,97,255,0.3);
+  color: #a991ff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.case-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.case-stat { text-align: center; }
+
+.case-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.case-stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.case-quote {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.7;
+  padding-left: 16px;
+  border-left: 2px solid rgba(200,241,53,0.4);
+  margin-bottom: 10px;
+}
+
+.case-author {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ── RÉSULTATS ── */
 #pricing { background: var(--black); }
 
 .pricing-header { text-align: center; margin-bottom: 64px; }
@@ -693,7 +800,7 @@ input, textarea, select {
   border-radius: 12px;
   padding: 14px 18px;
   color: var(--white);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.95rem;
   transition: border-color 0.2s;
   outline: none;
@@ -797,7 +904,7 @@ footer .logo { font-size: 1.1rem; }
     <a href="#" class="logo">Visibly<span>.</span></a>
     <ul>
       <li><a href="#services">Services</a></li>
-      <li><a href="#how">Comment ça marche</a></li>
+      <li><a href="#resultats">Résultats</a></li>
       <li><a href="#pricing">Tarifs</a></li>
       <li><a href="#contact" class="nav-cta">Démarrer</a></li>
     </ul>
@@ -966,6 +1073,104 @@ footer .logo { font-size: 1.1rem; }
       </div>
     </div>
   </div>
+</div>
+```
+
+  </section>
+
+  <!-- RÉSULTATS -->
+
+  <section id="resultats">
+    <div class="reveal" style="text-align:center; margin-bottom: 64px;">
+      <div class="section-tag" style="justify-content:center; display:flex;">Résultats clients</div>
+      <h2 class="section-title" style="margin: 0 auto;">Ce qu'on a accompli pour nos clients</h2>
+      <p class="section-sub" style="margin: 16px auto 0; text-align:center;">Des chiffres concrets, des commerces transformés.</p>
+    </div>
+
+```
+<div class="results-cases reveal">
+
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-icon">🍕</div>
+      <div>
+        <div class="case-name">Restaurant Le Sud</div>
+        <div class="case-sector">Restauration · Marseille</div>
+      </div>
+      <div class="case-service-tag">Réseaux sociaux</div>
+    </div>
+    <div class="case-stats">
+      <div class="case-stat">
+        <div class="case-stat-num">+340%</div>
+        <div class="case-stat-label">de portée Instagram</div>
+      </div>
+      <div class="case-stat">
+        <div class="case-stat-num">+890</div>
+        <div class="case-stat-label">nouveaux abonnés</div>
+      </div>
+      <div class="case-stat">
+        <div class="case-stat-num">3 mois</div>
+        <div class="case-stat-label">pour atteindre ces résultats</div>
+      </div>
+    </div>
+    <div class="case-quote">"Depuis qu'on travaille avec Visibly Agency, notre restaurant est complet tous les weekends. Les gens nous trouvent directement sur Instagram."</div>
+    <div class="case-author">— Marc D., Gérant</div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-icon">✂️</div>
+      <div>
+        <div class="case-name">Salon Élégance</div>
+        <div class="case-sector">Coiffure · Lyon</div>
+      </div>
+      <div class="case-service-tag">Pub Meta</div>
+    </div>
+    <div class="case-stats">
+      <div class="case-stat">
+        <div class="case-stat-num">+52</div>
+        <div class="case-stat-label">nouveaux clients/mois</div>
+      </div>
+      <div class="case-stat">
+        <div class="case-stat-num">0,42€</div>
+        <div class="case-stat-label">coût par clic</div>
+      </div>
+      <div class="case-stat">
+        <div class="case-stat-num">×4,8</div>
+        <div class="case-stat-label">retour sur investissement</div>
+      </div>
+    </div>
+    <div class="case-quote">"En 6 semaines on a récupéré 3 fois notre investissement. Les publicités Meta ciblaient exactement notre clientèle locale."</div>
+    <div class="case-author">— Sophie L., Propriétaire</div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-icon">👗</div>
+      <div>
+        <div class="case-name">Boutique Nova</div>
+        <div class="case-sector">Mode · Bordeaux</div>
+      </div>
+      <div class="case-service-tag">Pack complet</div>
+    </div>
+    <div class="case-stats">
+      <div class="case-stat">
+        <div class="case-stat-num">+1200</div>
+        <div class="case-stat-label">abonnés Instagram</div>
+      </div>
+      <div class="case-stat">
+        <div class="case-stat-num">+28%</div>
+        <div class="case-stat-label">de ventes en boutique</div>
+      </div>
+      <div class="case-stat">
+        <div class="case-stat-num">8,1%</div>
+        <div class="case-stat-label">taux d'engagement</div>
+      </div>
+    </div>
+    <div class="case-quote">"Notre identité visuelle a été entièrement repensée. Les clients nous disent régulièrement qu'ils nous ont trouvés sur Instagram."</div>
+    <div class="case-author">— Camille R., Fondatrice</div>
+  </div>
+
 </div>
 ```
 
