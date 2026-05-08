@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visibly Agency — Rendez votre entreprise visible</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --black: #080810;
+  --white: #F5F4EF;
+  --accent: #C8F135;
+  --accent2: #7B61FF;
+  --gray: #1A1A28;
+  --gray2: #2E2E44;
+  --text-muted: #8888AA;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(8,8,16,0.7);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.logo span { color: var(--accent); }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 36px;
+}
+
+nav ul a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+nav ul a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--accent);
+  color: var(--black) !important;
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-weight: 500 !important;
+  transition: opacity 0.2s !important;
+}
+
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.blob-1 {
+  width: 600px; height: 600px;
+  background: rgba(123,97,255,0.18);
+  top: -100px; right: -150px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 400px; height: 400px;
+  background: rgba(200,241,53,0.12);
+  bottom: 0; left: -100px;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-40px) scale(1.05); }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,241,53,0.1);
+  border: 1px solid rgba(200,241,53,0.25);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+  width: fit-content;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  max-width: 900px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+h1 .highlight {
+  color: var(--accent);
+  position: relative;
+  display: inline-block;
+}
+
+h1 .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.4;
+}
+
+.hero-sub {
+  margin-top: 28px;
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  font-weight: 300;
+  line-height: 1.7;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-actions {
+  margin-top: 48px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--black);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 16px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 40px rgba(200,241,53,0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 60px rgba(200,241,53,0.4);
+}
+
+.btn-ghost {
+  color: var(--white);
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.btn-ghost:hover { opacity: 1; }
+.btn-ghost::after { content: '→'; }
+
+/* Stats bar */
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 80px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.stat-item {}
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.stat-num span { color: var(--accent); }
+.stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  background: var(--accent);
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-track span {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--black);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0 32px;
+}
+
+.marquee-track span.dot::before {
+  content: '✦';
+  margin-right: 32px;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── SECTIONS COMMON ── */
+section { padding: 100px 48px; }
+
+.section-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  max-width: 600px;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-top: 16px;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* ── SERVICES ── */
+#services { background: var(--black); }
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.service-card {
+  background: var(--gray);
+  padding: 48px 40px;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover { background: var(--gray2); }
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-icon {
+  width: 52px; height: 52px;
+  background: rgba(200,241,53,0.1);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.service-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.service-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.service-price {
+  margin-top: 28px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.price-from { font-size: 0.75rem; color: var(--text-muted); }
+.price-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.price-period { font-size: 0.8rem; color: var(--text-muted); }
+
+/* ── HOW IT WORKS ── */
+#how {
+  background: var(--gray);
+  position: relative;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 64px;
+}
+
+.steps { display: flex; flex-direction: column; gap: 0; }
+
+.step {
+  display: flex;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+
+.step:last-child { border-bottom: none; }
+
+.step-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(200,241,53,0.1);
+  border: 1px solid rgba(200,241,53,0.2);
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-content {}
+.step-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.step-desc { color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; }
+
+/* Visual side */
+.how-visual {
+  background: var(--gray2);
+  border-radius: 24px;
+  padding: 48px;
+  border: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-visual::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: rgba(123,97,255,0.15);
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.result-card {
+  background: rgba(200,241,53,0.08);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.result-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+.result-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.result-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(200,241,53,0.15);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 100px;
+  margin-top: 4px;
+}
+
+.mini-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.mini-card {
+  background: var(--gray);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.mini-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 4px; }
+.mini-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* ── PRICING ── */
+#pricing { background: var(--black); }
+
+.pricing-header { text-align: center; margin-bottom: 64px; }
+.pricing-header .section-title { margin: 0 auto; }
+.pricing-header .section-sub { margin: 16px auto 0; text-align: center; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: var(--gray);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 24px;
+  padding: 40px 36px;
+  position: relative;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.pricing-card:hover { transform: translateY(-4px); }
+
+.pricing-card.featured {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.pricing-card.featured * { color: var(--black) !important; }
+
+.plan-badge {
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--black);
+  color: var(--accent) !important;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--accent);
+  white-space: nowrap;
+}
+
+.plan-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.plan-price {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.plan-price sup { font-size: 1.2rem; vertical-align: super; }
+.plan-period { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 28px; }
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.plan-features li {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.plan-features li::before {
+  content: '✓';
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.pricing-card.featured .plan-features li::before { color: var(--black); }
+
+.plan-btn {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  border-radius: 100px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.plan-btn:hover { background: rgba(255,255,255,0.14); }
+
+.pricing-card.featured .plan-btn {
+  background: var(--black);
+  color: var(--accent);
+  border-color: transparent;
+}
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--gray);
+}
+
+.contact-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-inner .section-title { margin: 0 auto; }
+.contact-inner .section-sub { margin: 16px auto 48px; text-align: center; }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+
+label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+input, textarea, select {
+  background: var(--gray2);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+}
+
+textarea { resize: vertical; min-height: 120px; }
+
+select option { background: var(--gray2); }
+
+.form-submit {
+  background: var(--accent);
+  color: var(--black);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 16px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 40px rgba(200,241,53,0.2);
+  margin-top: 8px;
+}
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 60px rgba(200,241,53,0.35);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  padding: 40px 48px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+footer .logo { font-size: 1.1rem; }
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  nav ul { display: none; }
+  #hero, section { padding-left: 20px; padding-right: 20px; }
+  h1 { font-size: 2.8rem; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .how-grid { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <a href="#" class="logo">Visibly<span>.</span></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">Comment ça marche</a></li>
+      <li><a href="#pricing">Tarifs</a></li>
+      <li><a href="#contact" class="nav-cta">Démarrer</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section id="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+```
+<div class="hero-tag">Agence de communication digitale</div>
+
+<h1>Rendez votre<br/>entreprise <span class="highlight">visible</span><br/>en ligne.</h1>
+
+<p class="hero-sub">
+  Visibly Agency gère votre présence sur les réseaux sociaux et vos publicités Meta pour attirer plus de clients — sans que vous ayez à vous en occuper.
+</p>
+
+<div class="hero-actions">
+  <a href="#contact" class="btn-primary">Demander un devis gratuit</a>
+  <a href="#services" class="btn-ghost">Voir nos services</a>
+</div>
+
+<div class="hero-stats">
+  <div class="stat-item">
+    <div class="stat-num">+<span>3×</span></div>
+    <div class="stat-label">Visibilité moyenne</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num"><span>48h</span></div>
+    <div class="stat-label">Pour lancer votre campagne</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num"><span>100%</span></div>
+    <div class="stat-label">Suivi personnalisé</div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- MARQUEE -->
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Réseaux sociaux</span><span class="dot">Publicité Meta</span><span>Création de visuels</span><span class="dot">Instagram & Facebook</span><span>Gestion de communauté</span><span class="dot">Stratégie digitale</span><span>Réseaux sociaux</span><span class="dot">Publicité Meta</span><span>Création de visuels</span><span class="dot">Instagram & Facebook</span><span>Gestion de communauté</span><span class="dot">Stratégie digitale</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+
+  <section id="services">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-tag">Nos services</div>
+        <h2 class="section-title">Tout ce qu'il faut pour être visible</h2>
+      </div>
+      <p class="section-sub">Des solutions claires, des résultats mesurables. Vous vous concentrez sur votre métier, on s'occupe du reste.</p>
+    </div>
+
+```
+<div class="services-grid reveal">
+  <div class="service-card">
+    <div class="service-icon">📱</div>
+    <div class="service-name">Gestion Réseaux Sociaux</div>
+    <div class="service-desc">Création et publication de contenu sur Instagram et Facebook. Visuels, légendes, hashtags — tout est géré pour vous chaque semaine.</div>
+    <div class="service-price">
+      <span class="price-from">à partir de</span>
+      <span class="price-num">300€</span>
+      <span class="price-period">/mois</span>
+    </div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-icon">🎯</div>
+    <div class="service-name">Publicité Meta</div>
+    <div class="service-desc">Campagnes publicitaires sur Instagram et Facebook ciblées précisément vers vos futurs clients. Mise en place + suivi hebdomadaire.</div>
+    <div class="service-price">
+      <span class="price-from">à partir de</span>
+      <span class="price-num">450€</span>
+      <span class="price-period">/mois</span>
+    </div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-icon">🎨</div>
+    <div class="service-name">Création de Visuels</div>
+    <div class="service-desc">Logos, affiches, bannières et visuels pour vos réseaux. Une identité visuelle cohérente qui marque les esprits.</div>
+    <div class="service-price">
+      <span class="price-from">à partir de</span>
+      <span class="price-num">150€</span>
+      <span class="price-period">/projet</span>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section id="how">
+    <div class="reveal">
+      <div class="section-tag">Comment ça marche</div>
+      <h2 class="section-title">Simple, rapide, efficace</h2>
+      <p class="section-sub">En 4 étapes, votre entreprise gagne en visibilité sans effort de votre part.</p>
+    </div>
+
+```
+<div class="how-grid">
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <div class="step-title">On discute de vos objectifs</div>
+        <div class="step-desc">Un appel gratuit de 30 min pour comprendre votre activité, votre cible et ce que vous voulez accomplir.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <div class="step-title">On prépare votre stratégie</div>
+        <div class="step-desc">On définit les contenus, les messages clés et le calendrier de publication adapté à votre secteur.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <div class="step-title">On lance et on publie</div>
+        <div class="step-desc">Tout est mis en place sous 48h. Votre présence en ligne prend vie pendant que vous gérez votre business.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <div class="step-title">On suit les résultats ensemble</div>
+        <div class="step-desc">Chaque semaine vous recevez un rapport clair : portée, interactions, nouveaux abonnés, performance des pubs.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="how-visual reveal">
+    <div class="result-card">
+      <div class="result-label">Portée mensuelle</div>
+      <div class="result-val">24 800</div>
+      <div class="result-change">↑ +187% ce mois</div>
+    </div>
+    <div class="mini-cards">
+      <div class="mini-card">
+        <div class="mini-label">Nouveaux abonnés</div>
+        <div class="mini-val">+342</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-label">Taux d'engagement</div>
+        <div class="mini-val">6,4%</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-label">Clics pub</div>
+        <div class="mini-val">1 240</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-label">Coût par clic</div>
+        <div class="mini-val">0,38€</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- PRICING -->
+
+  <section id="pricing">
+    <div class="pricing-header reveal">
+      <div class="section-tag">Tarifs</div>
+      <h2 class="section-title">Des offres claires, sans surprise</h2>
+      <p class="section-sub">Engagez-vous sans risque. Résiliez à tout moment.</p>
+    </div>
+
+```
+<div class="pricing-grid reveal">
+  <div class="pricing-card">
+    <div class="plan-name">Starter</div>
+    <div class="plan-price"><sup>€</sup>300</div>
+    <div class="plan-period">par mois</div>
+    <ul class="plan-features">
+      <li>8 posts Instagram/mois</li>
+      <li>Visuels personnalisés</li>
+      <li>Légendes & hashtags</li>
+      <li>Rapport mensuel</li>
+    </ul>
+    <a href="#contact" class="plan-btn">Commencer</a>
+  </div>
+
+  <div class="pricing-card featured">
+    <div class="plan-badge">⭐ Le plus populaire</div>
+    <div class="plan-name">Growth</div>
+    <div class="plan-price"><sup>€</sup>550</div>
+    <div class="plan-period">par mois</div>
+    <ul class="plan-features">
+      <li>16 posts/mois</li>
+      <li>Gestion Instagram + Facebook</li>
+      <li>1 campagne pub Meta</li>
+      <li>Rapport hebdomadaire</li>
+      <li>Suivi personnalisé</li>
+    </ul>
+    <a href="#contact" class="plan-btn">Commencer</a>
+  </div>
+
+  <div class="pricing-card">
+    <div class="plan-name">Pro</div>
+    <div class="plan-price"><sup>€</sup>900</div>
+    <div class="plan-period">par mois</div>
+    <ul class="plan-features">
+      <li>Posts illimités</li>
+      <li>Multi-plateformes</li>
+      <li>Pubs Meta avancées</li>
+      <li>Création de visuels incluse</li>
+      <li>Appel stratégie mensuel</li>
+    </ul>
+    <a href="#contact" class="plan-btn">Commencer</a>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="reveal">
+        <div class="section-tag">Contact</div>
+        <h2 class="section-title">Parlons de votre projet</h2>
+        <p class="section-sub">Devis gratuit sous 24h. Aucun engagement.</p>
+      </div>
+
+```
+  <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Prénom</label>
+        <input type="text" placeholder="Jean" required />
+      </div>
+      <div class="form-group">
+        <label>Entreprise</label>
+        <input type="text" placeholder="Ma Boutique" required />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="jean@entreprise.fr" required />
+    </div>
+    <div class="form-group">
+      <label>Service souhaité</label>
+      <select>
+        <option>Gestion Réseaux Sociaux</option>
+        <option>Publicité Meta</option>
+        <option>Création de Visuels</option>
+        <option>Pack complet (Growth)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Votre message</label>
+      <textarea placeholder="Parlez-nous de votre activité et de vos objectifs..."></textarea>
+    </div>
+    <button type="submit" class="form-submit">Envoyer ma demande →</button>
+  </form>
+</div>
+```
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <a href="#" class="logo">Visibly<span>.</span></a>
+    <span class="footer-copy">© 2025 Visibly Agency. Tous droits réservés.</span>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Tarifs</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+
+    // Form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Message envoyé !';
+      btn.style.background = '#7B61FF';
+      btn.style.color = '#fff';
+      setTimeout(() => {
+        btn.textContent = 'Envoyer ma demande →';
+        btn.style.background = '';
+        btn.style.color = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
