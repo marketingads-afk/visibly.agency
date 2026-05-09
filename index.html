@@ -26,11 +26,11 @@
   --mono: 'DM Mono', monospace;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #06060E; }
 
 body {
-  background: var(--bg);
-  color: var(--white);
+  background: #06060E;
+  color: #F0EFE8;
   font-family: var(--font);
   font-size: 16px;
   line-height: 1.7;
@@ -93,7 +93,7 @@ nav {
 }
 .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
 
-.page { display: none; padding-top: 68px; min-height: 100vh; }
+.page { display: none; padding-top: 68px; min-height: 100vh; background: #06060E; }
 .page.active { display: block; }
 
 /* HERO */
@@ -105,6 +105,7 @@ nav {
   padding: 80px 48px 60px;
   position: relative;
   overflow: hidden;
+  background: #06060E;
 }
 
 .blob { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; }
@@ -171,7 +172,7 @@ h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: 
 .why-card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
 /* PAGE HERO */
-.page-hero { padding: 80px 48px 60px; background: var(--bg); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+.page-hero { padding: 80px 48px 60px; background: #06060E; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
 .page-hero::before { content:''; position:absolute; top:-200px; right:-200px; width:600px; height:600px; background:radial-gradient(circle, rgba(212,245,60,0.07) 0%, transparent 70%); pointer-events:none; }
 .page-hero-inner { max-width: 680px; position: relative; }
 .page-title { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin: 16px 0 20px; }
@@ -258,9 +259,19 @@ footer { background: var(--bg); padding: 32px 48px; border-top: 1px solid var(--
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(6,6,14,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 199; flex-direction: column; padding: 16px 20px 24px; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu button { background: none; border: none; color: var(--muted); font-family: var(--font); font-size: 1rem; font-weight: 500; padding: 14px 16px; border-radius: 12px; cursor: pointer; text-align: left; transition: all 0.2s; }
+.mobile-menu button:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+.mobile-menu button.active { color: var(--bg); background: var(--accent); font-weight: 700; }
+
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
   .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
   .hero, .why-section, .process-section, .services-section, .results-section, .contact-section { padding-left: 20px; padding-right: 20px; }
   .page-hero { padding: 60px 20px 40px; }
   .why-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -285,7 +296,17 @@ footer { background: var(--bg); padding: 32px 48px; border-top: 1px solid var(--
     <li><button onclick="showPage('results')" id="nav-results">Résultats</button></li>
   </ul>
   <button class="nav-cta" onclick="showPage('services')">Demander un devis</button>
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button onclick="showPage('home');toggleMenu()" id="mob-home">🏠 Accueil</button>
+  <button onclick="showPage('process');toggleMenu()" id="mob-process">⚙️ Notre processus</button>
+  <button onclick="showPage('services');toggleMenu()" id="mob-services">💼 Nos services</button>
+  <button onclick="showPage('results');toggleMenu()" id="mob-results">📊 Résultats clients</button>
+</div>
 
 <!-- HOME -->
 
@@ -612,6 +633,11 @@ footer { background: var(--bg); padding: 32px 48px; border-top: 1px solid var(--
 </footer>
 
 <script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + name).classList.add('active');
